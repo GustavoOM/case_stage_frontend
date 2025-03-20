@@ -60,12 +60,20 @@ const ProcessTree: React.FC<ProcessTreeProps> = ({ refresh }) => {
         let y = 50;
 
         const createNodesAndEdges = (process: Process, parentId?: string, color?: string) => {
+            const nodeStyle = {
+                backgroundColor: color || '#fff',
+                border: '2px solid #000',
+                width: window.innerWidth < 600 ? 100 : 150,
+                height: window.innerWidth < 600 ? 50 : 75,
+                fontSize: window.innerWidth < 600 ? '12px' : '14px',
+            };
+
             const node: Node = {
                 id: process.id,
                 data: { label: process.name },
                 position: { x, y },
                 type: 'default',
-                style: { backgroundColor: color || '#fff', border: '2px solid #000' },
+                style: nodeStyle,
             };
             nodes.push(node);
         
@@ -143,6 +151,10 @@ const ProcessTree: React.FC<ProcessTreeProps> = ({ refresh }) => {
                     console.log('Node clicked:', node.id);
                     navigate(`/process-details/${node.id}`);
                 }}
+                zoomOnScroll={true}
+                zoomOnPinch={true}
+                panOnScroll={true}
+                panOnDrag={true}
             >
                 <MiniMap />
                 <Controls />
