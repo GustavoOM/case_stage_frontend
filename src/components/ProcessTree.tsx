@@ -4,6 +4,7 @@ import ReactFlow, { MiniMap, Controls, Background, Node, Edge } from 'reactflow'
 import 'reactflow/dist/style.css';
 import api from '../services/api';
 import { Process } from '../../types';
+import Loading from './Loading';
 
 interface ProcessTreeProps {
     refresh: boolean;
@@ -120,7 +121,7 @@ const ProcessTree: React.FC<ProcessTreeProps> = ({ refresh }) => {
     };
 
     if (loading) {
-        return <div>Carregando...</div>;
+        return <Loading/>;
     }
 
     return (

@@ -19,7 +19,14 @@ const Navbar: React.FC = () => {
                         sx={{ width: 56, height: 56, marginRight: 2 }}
                     />
                 </Button>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{
+                        flexGrow: 1,
+                        visibility: { xs: 'hidden', sm: 'visible' }, 
+                    }}
+                >
                     Stage Consulting
                 </Typography>
                 <Button

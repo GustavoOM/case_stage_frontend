@@ -7,12 +7,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CreateArea from './CreateArea';
 import EditAreaModal from './EditAreaModal';
 import DeleteAreaModal from './DeleteAreaModal';
+import Loading from './Loading';
 
 const AreaList: React.FC = () => {
     const [areas, setAreas] = useState<Area[]>([]);
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [openEditModal, setOpenEditModal] = useState(false);
     const [selectedArea, setSelectedArea] = useState<Area | null>(null);
+    const [loading, setLoading] = useState(true);
 
     const fetchAreas = async () => {
         try {
@@ -20,6 +22,8 @@ const AreaList: React.FC = () => {
             setAreas(response.data.areas);
         } catch (error) {
             console.error('Error fetching areas:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -58,6 +62,10 @@ const AreaList: React.FC = () => {
     const handleAreaCreated = () => {
         fetchAreas(); 
     };
+
+    if (loading) {
+        return <Loading />;
+    }
 
     return (
         <div>

@@ -7,6 +7,7 @@ import DeleteProcessModal from './DeleteProcessModal';
 import { Card, CardContent, Typography, IconButton, Grid } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Loading from './Loading';
 
 const ProcessDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -58,7 +59,7 @@ const ProcessDetail: React.FC = () => {
     };
 
     if (!process || !area) {
-        return <div className="text-center py-10">Carregando...</div>;
+        return<Loading/>
     }
 
     return (
