@@ -55,7 +55,7 @@ const ProcessDetail: React.FC = () => {
     };
 
     const handleChildClick = (childId: string) => {
-        navigate(`/process/${childId}`);
+        navigate(`/process-details/${childId}`);
     };
 
     if (!process || !area) {
